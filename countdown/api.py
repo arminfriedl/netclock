@@ -5,11 +5,11 @@ from time import time
 import uuid
 import struct
 
-from api.v1 import api_v1
+from . import app
 
 db = Walrus(host='localhost', port=6379, db=0)
 
-@api_v1.route('/countdown/<uuid:id>', methods=['GET'])
+@app.route('/api/v1/<uuid:id>', methods=['GET'])
 def get_countdown(id):
     ct = db.Hash(str(id))
 
@@ -18,7 +18,7 @@ def get_countdown(id):
 
     return resp
 
-@api_v1.route('/countdown', methods=['POST'])
+@app.route('/api/v1', methods=['POST'])
 def create_countdown():
     countdown = request.json
     ct_id = str(uuid.uuid4())

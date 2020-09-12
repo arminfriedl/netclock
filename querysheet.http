@@ -1,0 +1,6 @@
+# Create a new countdown clock with
+# 5000 seconds
+POST http://localhost:5000/countdown/api/v1
+Content-Type: application/json
+
+{"total": "150"}

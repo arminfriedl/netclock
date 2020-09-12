@@ -2,10 +2,15 @@
 {% block title %}Countdown{% endblock title %}
 
 {% block body %}
-Hello from Countdown
-<div id="clock"></div>
+<div class="center">
+    <p id="countdown" />
+    <p id="subtext" />
+</div>
 {% endblock body %}
 
 {% block scripts %}
+<script>
+ var countdown_id = "{{ countdown_id }}";
+</script>
 <script src="{{ url_for('static', filename='dist/countdown.bundle.js') }}"></script>
 {% endblock scripts %}

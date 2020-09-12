@@ -22,6 +22,7 @@
     },
     "dependencies": {
         "jquery": "^3.5.1",
-        "loglevel": "^1.7.0"
+        "loglevel": "^1.7.0",
+        "reset-css": "^5.0.1"
     }
 }
