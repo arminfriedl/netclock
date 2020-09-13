@@ -4,3 +4,15 @@ POST http://localhost:5000/countdown/api/v1
 Content-Type: application/json
 
 {"total": "150"}
+
+# Set id
+:id = cddabcb5-9da1-4ecb-ad36-2ca468da68e1
+
+# Start
+PATCH http://localhost:5000/countdown/api/v1/start/:id
+
+# Stop
+PATCH http://localhost:5000/countdown/api/v1/stop/:id
+
+# Reset
+PATCH http://localhost:5000/countdown/api/v1/reset/:id

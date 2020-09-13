@@ -6,26 +6,42 @@ import uuid
 import struct
 
 from . import app
-
-db = Walrus(host='localhost', port=6379, db=0)
+from .countdown import Cache
 
 @app.route('/api/v1/<uuid:id>', methods=['GET'])
 def get_countdown(id):
-    ct = db.Hash(str(id))
+    cache = Cache.getInstance()
+    countdown = cache.get_countdown(id)
 
-    resp = ct.as_dict(decode=True)
-    resp['left'] = float(ct['total']) - (time() - float(ct['start']))
+    response = countdown
 
-    return resp
+    time_passed = time() - float(countdown['start'])
+    time_left = float(countdown['total']) - time_passed
+    response['left'] = time_left
+    response['roundtrip_start'] = request.args.get('roundtrip_start')
+
+    return response
 
 @app.route('/api/v1', methods=['POST'])
 def create_countdown():
+    cache = Cache.getInstance()
+
     countdown = request.json
-    ct_id = str(uuid.uuid4())
-    ct = db.Hash(ct_id)
-    ct.update(start=time(), total=countdown['total'])
+    total = float(countdown['total'])
+    response = cache.add_countdown(total)
+    return response
 
-    resp = ct.as_dict(decode=True)
-    resp['id'] = ct_id
+@app.route('/api/v1/start/<uuid:id>', methods=['PATCH'])
+def start_countdown(id):
+    cache = Cache.getInstance()
+    return cache.start_countdown(id)
 
-    return resp
+@app.route('/api/v1/reset/<uuid:id>', methods=['PATCH'])
+def reset_countdown(id):
+    cache = Cache.getInstance()
+    return cache.reset_countdown(id)
+
+@app.route('/api/v1/stop/<uuid:id>', methods=['PATCH'])
+def stop_countdown(id):
+    cache = Cache.getInstance()
+    return cache.stop_countdown(id)

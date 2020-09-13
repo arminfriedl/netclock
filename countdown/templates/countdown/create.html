@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Countdown{% endblock title %}
+
+{% block body %}
+<form method="POST" action="{{ url_for('countdown.create') }}">
+    {{ form.csrf_token }}
+    {{ form.hours.label }}: {{ form.hours }}
+    {{ form.minutes.label }}: {{ form.minutes }}
+    {{ form.seconds.label }}: {{ form.seconds }}
+    <input type="submit" value="Go">
+</form>
+
+{% if clock %}
+Clock: <a href="http://localhost:5000/countdown/{{ clock }}">http://localhost:5000/countdown/{{ clock }}</a>
+{% endif %}
+{% endblock body %}
+
+{% block scripts %}
+{% endblock scripts %}

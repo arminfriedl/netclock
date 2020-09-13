@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Countdown{% endblock title %}
+
+{% block body %}
+{% for clock in clocks %}
+<div id="created-countdowns">
+    <div class="created-countdown">
+        Clock: <a href="http://localhost:5000/countdown/{{ clock }}">http://localhost:5000/countdown/{{ clock }}</a>
+    </div>
+</div>
+{% endfor %}
+{% endblock body %}
+
+{% block scripts %}
+{% endblock scripts %}
