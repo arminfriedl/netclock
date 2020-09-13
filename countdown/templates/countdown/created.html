@@ -2,14 +2,29 @@
 {% block title %}Countdown{% endblock title %}
 
 {% block body %}
-{% for clock in clocks %}
+
 <div id="created-countdowns">
-    <div class="created-countdown">
-        Clock: <a href="http://localhost:5000/countdown/{{ clock }}">http://localhost:5000/countdown/{{ clock }}</a>
+{% for countdown in countdowns %}
+    <div class="created-countdown" countdown-id="{{ countdown }}">
+        <div class="created-countdown-header">
+            <h1>Countdown {{ loop.index }}</h1>
+            <div class="created-countdown-time"></div>
+            <div class="created-countdown-info"></div>
+            <div class="created-countdown-link">
+                <a href="{{ countdown }}">Link</a>
+            </div>
+        </div>
+        <div class="created-countdown-controls">
+            <button class="created-countdown-start" type="button" name="start" value="{{ countdown }}">Start</button>
+            <button class="created-countdown-stop" type="button" name="stop" value="{{ countdown }}">Stop</button>
+            <button class="created-countdown-reset" type="button" name="reset" value="{{ countdown }}">Reset</button>
+        </div>
     </div>
-</div>
 {% endfor %}
+</div>
+
 {% endblock body %}
 
 {% block scripts %}
+<script src="{{ url_for('static', filename='dist/countdown_created.bundle.js') }}"></script>
 {% endblock scripts %}

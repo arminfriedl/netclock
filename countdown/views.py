@@ -17,11 +17,8 @@ def create():
         total += (form.minutes.data or 0) * 60
         total += (form.hours.data or 0) * 60 * 60
 
-        countdown_id = cache.add_countdown(total)
-        # user = User(form.username.data, form.email.data,
-        #             form.password.data)
-        # db_session.add(user)
-        session['created_countdowns'].append(str(countdown_id))
+        countdown = cache.add_countdown(total)
+        session['created_countdowns'].append(str(countdown['id']))
         session.modified = True
         return redirect(url_for('countdown.created'))
 
@@ -29,9 +26,9 @@ def create():
 
 @app.route('/mine', methods=['GET'])
 def created():
-    return render_template('countdown/created.html', clocks=session['created_countdowns'])
+    return render_template('countdown/created.html', countdowns=session.get('created_countdowns') or [])
 
 @app.route('/<uuid:countdown_id>', methods=['GET'])
 def view(countdown_id):
-    return render_template('countdown/countdown.html', countdown_id=countdown_id)
+    return render_template('countdown/view.html', countdown_id=countdown_id)
 

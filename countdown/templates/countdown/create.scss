@@ -1,0 +1,43 @@
+#btn-create {
+    margin-top: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.5em;
+    background-color: none;
+    border-style: solid;
+    border-width: 0px;
+    border-width: 1px;
+    border-right-width: 1px;
+    border-color: #7676ff;
+    display: block;
+    padding: 0.2em;
+    padding-left: 0.7em;
+    padding-right: 0.7em;
+    cursor: pointer;
+    color: #7676ff;
+    background-color: white;
+}
+
+#time {
+    display: flex;
+}
+
+.time-value {
+    margin-bottom: 0.3em;
+}
+
+.time-label {
+    color: gray;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+#hours, #minutes, #seconds {
+    font-size: 3em;
+    font-style: bold;
+    border-style: none;
+    display: block;
+    width: 5em;
+    text-align: center;
+    color: blue;
+}

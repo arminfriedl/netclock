@@ -4,7 +4,9 @@ const path = require('path');
 module.exports = {
     entry: {
         netclock: './js/netclock.js',
-        countdown: './countdown/countdown.js'
+        countdown_create: './countdown/templates/countdown/create.js',
+        countdown_view: './countdown/templates/countdown/view.js',
+        countdown_created: './countdown/templates/countdown/created.js'
     },
     plugins: [
         new CleanWebpackPlugin()

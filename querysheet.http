@@ -6,7 +6,7 @@ Content-Type: application/json
 {"total": "150"}
 
 # Set id
-:id = cddabcb5-9da1-4ecb-ad36-2ca468da68e1
+:id = 224489a4-799d-4960-9dd1-56c4b81d1c2e
 
 # Start
 PATCH http://localhost:5000/countdown/api/v1/start/:id
@@ -16,3 +16,6 @@ PATCH http://localhost:5000/countdown/api/v1/stop/:id
 
 # Reset
 PATCH http://localhost:5000/countdown/api/v1/reset/:id
+
+# GET
+GET http://localhost:5000/countdown/api/v1/:id

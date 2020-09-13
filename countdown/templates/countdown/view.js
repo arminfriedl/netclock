@@ -1,12 +1,12 @@
-// This file is packed by webpack into /static/dist/countdown.bundle.js
-// Use with: `url_for('static', filename='dist/countdown.bundle.js')`
+// This file is packed by webpack into /static/dist/countdown_view.bundle.js
+// Use with: `url_for('static', filename='dist/countdown_view.bundle.js')`
 // See: webpack.common.js
 import log from 'loglevel';
 import $ from 'jquery';
 
-import {sleep} from '../js/netclock.js';
+import {sleep} from '../../../js/netclock.js';
 
-import './countdown.scss';
+import './view.scss';
 
 let api_base = "/countdown/api/v1/";
 
@@ -75,7 +75,10 @@ let updateCountdown = () => {
     let text = formatTime(time.hours, time.minutes, time.seconds);
 
     sleep(time.milliseconds)
-        .then(() => $("#countdown").text(text));
+        .then(() => {
+            $("#countdown").text(text);
+            $("#subtext").text();
+        });
 };
 
 let unsyncTimer = undefined;

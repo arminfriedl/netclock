@@ -2,18 +2,29 @@
 {% block title %}Countdown{% endblock title %}
 
 {% block body %}
-<form method="POST" action="{{ url_for('countdown.create') }}">
-    {{ form.csrf_token }}
-    {{ form.hours.label }}: {{ form.hours }}
-    {{ form.minutes.label }}: {{ form.minutes }}
-    {{ form.seconds.label }}: {{ form.seconds }}
-    <input type="submit" value="Go">
-</form>
+<div class="center">
+    <form method="POST" action="{{ url_for('countdown.create') }}">
+        {{ form.csrf_token }}
+        <div id="time">
+            <div class="time-input">
+                <div class="time-value"> {{ form.hours }} </div>
+                <div class="time-label"> {{ form.hours.label }} </div>
+            </div>
+            <div class="time-input">
+                <div class="time-value"> {{ form.minutes }} </div>
+                <div class="time-label"> {{ form.minutes.label }} </div>
+            </div>
+            <div class="time-input">
+                <div class="time-value"> {{ form.seconds }} </div>
+                <div class="time-label"> {{ form.seconds.label }} </div>
+            </div>
+        </div>
 
-{% if clock %}
-Clock: <a href="http://localhost:5000/countdown/{{ clock }}">http://localhost:5000/countdown/{{ clock }}</a>
-{% endif %}
+        <input id="btn-create" type="submit" value="Countdown">
+    </form>
+</div>
 {% endblock body %}
 
 {% block scripts %}
+<script src="{{ url_for('static', filename='dist/countdown_create.bundle.js') }}"></script>
 {% endblock scripts %}
