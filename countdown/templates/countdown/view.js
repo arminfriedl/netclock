@@ -77,7 +77,7 @@ let updateCountdown = () => {
     sleep(time.milliseconds)
         .then(() => {
             $("#countdown").text(text);
-            $("#subtext").text();
+            $("#subtext").text("");
         });
 };
 

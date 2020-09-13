@@ -3,26 +3,28 @@
 
 {% block body %}
 
-<div id="created-countdowns">
-{% for countdown in countdowns %}
-    <div class="created-countdown" countdown-id="{{ countdown }}">
-        <div class="created-countdown-header">
-            <h1>Countdown {{ loop.index }}</h1>
-            <div class="created-countdown-time"></div>
-            <div class="created-countdown-info"></div>
-            <div class="created-countdown-link">
-                <a href="{{ countdown }}">Link</a>
+<div class="center">
+    <div id="created-countdowns">
+        {% for countdown in countdowns %}
+        <div class="created-countdown" countdown-id="{{ countdown }}">
+            <div class="created-countdown-header">
+                <h1>Countdown {{ loop.index }}</h1>
+                <div class="created-countdown-time">00:00:00</div>
+                <div class="created-countdown-info">Loading...</div>
+                <div class="created-countdown-link">
+                    <a href="{{ countdown }}" target="_blank">Share</a>
+                </div>
+            </div>
+            <div class="created-countdown-controls">
+                <button class="created-countdown-start" type="button" name="start" value="{{ countdown }}">Start</button>
+                <button class="created-countdown-stop" type="button" name="stop" value="{{ countdown }}">Stop</button>
+                <button class="created-countdown-reset" type="button" name="reset" value="{{ countdown }}">Reset</button>
             </div>
         </div>
-        <div class="created-countdown-controls">
-            <button class="created-countdown-start" type="button" name="start" value="{{ countdown }}">Start</button>
-            <button class="created-countdown-stop" type="button" name="stop" value="{{ countdown }}">Stop</button>
-            <button class="created-countdown-reset" type="button" name="reset" value="{{ countdown }}">Reset</button>
-        </div>
+        {% endfor %}
     </div>
-{% endfor %}
-</div>
 
+</div>
 {% endblock body %}
 
 {% block scripts %}

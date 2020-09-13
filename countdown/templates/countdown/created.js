@@ -25,8 +25,8 @@ let formatTime = (h, m, s) => {
     let mtext = padTime(m);
     let stext = padTime(s);
 
-    htext = htext !== "00" ? htext + ":" : "";
-    mtext = mtext !== "00" || htext !== "00" ? mtext + ":" : "";
+    htext = htext + ":";
+    mtext = mtext + ":";
 
     return htext + mtext + stext;
 };
