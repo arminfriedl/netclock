@@ -9,3 +9,6 @@ import views
 from countdown import app as countdown
 app.register_blueprint(countdown, url_prefix="/countdown")
 
+from worldclock import app as worldclock
+app.register_blueprint(worldclock, url_prefix="/worldclock")
+

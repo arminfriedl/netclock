@@ -19,3 +19,10 @@ PATCH http://localhost:5000/countdown/api/v1/reset/:id
 
 # GET
 GET http://localhost:5000/countdown/api/v1/:id
+
+
+# GET
+GET http://localhost:5000/worldclock
+
+# POST
+POST http://localhost:5000/worldclock

@@ -4,7 +4,7 @@ from . import app
 from . import forms
 from .countdown import Cache
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('', methods=['GET', 'POST'])
 def create():
     session.permanent = True
     if not session.get('created_countdowns'):

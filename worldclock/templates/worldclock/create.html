@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Worldclock{% endblock title %}
+
+{% block body %}
+<div class="center">
+    <form method="POST" action="{{ url_for('worldclock.create') }}">
+        {{ form.csrf_token }}
+        <div id="main-clock">
+            <div id="main-clock-hours"></div>
+            <div id="main-clock-minutes"></div>
+            <div id="main-clock-timezone"></div>
+        </div>
+
+        <div id="sub-clocks">
+            <div class="sub-clock">
+                <div class="sub-clock-timezone"></div>
+            </div>
+        </div>
+
+        <input id="btn-create" type="submit" value="Go">
+    </form>
+</div>
+{% endblock body %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='dist/worldclock_create.bundle.js') }}"></script>
+{% endblock scripts %}
