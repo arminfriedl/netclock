@@ -4,22 +4,30 @@
 {% block body %}
 <div class="center">
     <form method="POST" action="{{ url_for('worldclock.create') }}">
-        {{ form.csrf_token }}
         <div id="main-clock">
-            <div id="main-clock-hours"></div>
-            <div id="main-clock-minutes"></div>
-            <div id="main-clock-timezone"></div>
+            <label for="main-clock-hours">Hour</label>
+            <input id="main-clock-hours" name="main-clock-hours" type="text">
+
+            <label for="main-clock-minutes">Minutes</label>
+            <input id="main-clock-minutes" name="main-clock-minutes" type="text">
+
+            <label for="main-clock-timezone">Timezone</label>
+            <input id="main-clock-timezone" name="main-clock-timezone" type="text">
         </div>
 
-        <div id="sub-clocks">
-            <div class="sub-clock">
-                <div class="sub-clock-timezone"></div>
-            </div>
-        </div>
+        <div id="subclocks"></div>
 
         <input id="btn-create" type="submit" value="Go">
     </form>
+
+
+    <div id="subclock-selection">
+        <input id="subclock-selection-timezone" type="text">
+        <button id="subclock-selection-add">Add</button>
+    </div>
 </div>
+
+
 {% endblock body %}
 
 {% block scripts %}

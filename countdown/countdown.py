@@ -1,20 +1,20 @@
-from walrus import Walrus
 from time import time
-
 from uuid import UUID, uuid4
-import struct
+
+from walrus import Walrus
+
 
 class Cache:
     __instance = None
 
     @staticmethod
-    def getInstance():
-        if Cache.__instance == None:
+    def get_instance():
+        if Cache.__instance is None:
             Cache()
         return Cache.__instance
 
     def __init__(self):
-        if Cache.__instance != None:
+        if Cache.__instance is None:
             raise Exception("Cache is a singleton. Use Cache.getInstance()")
         Cache.__instance = self
         self.db = Walrus(host='localhost', port=6379, db=0)

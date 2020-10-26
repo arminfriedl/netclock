@@ -1,8 +1,9 @@
-from flask import render_template, request, flash, redirect, url_for, session
+from flask import render_template, request, redirect, url_for, session
 
 from . import app
 from . import forms
 from .countdown import Cache
+
 
 @app.route('', methods=['GET', 'POST'])
 def create():
@@ -12,7 +13,7 @@ def create():
 
     form = forms.CountdownAdminForm(request.form)
     if request.method == 'POST' and form.validate():
-        cache = Cache.getInstance()
+        cache = Cache.get_instance()
         total = form.seconds.data or 0
         total += (form.minutes.data or 0) * 60
         total += (form.hours.data or 0) * 60 * 60
@@ -24,11 +25,12 @@ def create():
 
     return render_template('countdown/create.html', form=form, clock=None)
 
+
 @app.route('/mine', methods=['GET'])
 def created():
     return render_template('countdown/created.html', countdowns=session.get('created_countdowns') or [])
 
+
 @app.route('/<uuid:countdown_id>', methods=['GET'])
 def view(countdown_id):
     return render_template('countdown/view.html', countdown_id=countdown_id)
-

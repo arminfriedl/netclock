@@ -26,3 +26,6 @@ GET http://localhost:5000/worldclock
 
 # POST
 POST http://localhost:5000/worldclock
+
+# Autocomplete timezone
+GET http://localhost:5000/timezone/api/v1/autocomplete?complete=abc

@@ -4,6 +4,13 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+pyls-isort = "*"
+pyls-mypy = "*"
+pyls-black = "*"
+python-language-server = "*"
+pylint = "*"
+ipython = "*"
+pytest = "*"
 
 [packages]
 flask = "*"
