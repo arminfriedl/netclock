@@ -1,4 +1,4 @@
-FROM python:alpine
+FROM python:3.8-alpine
 
 RUN apk update && apk add redis su-exec \
   && pip3 install pipenv
