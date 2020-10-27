@@ -14,8 +14,8 @@ class Cache:
         return Cache.__instance
 
     def __init__(self):
-        if Cache.__instance is None:
-            raise Exception("Cache is a singleton. Use Cache.getInstance()")
+        if Cache.__instance is not None:
+            raise Exception("Cache is a singleton. Use Cache.get_instance()")
         Cache.__instance = self
         self.db = Walrus(host='localhost', port=6379, db=0)
 
